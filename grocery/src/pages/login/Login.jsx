@@ -6,14 +6,13 @@ import {
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
-  Heading,
   Text,
   useColorModeValue,
   Image,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import { signIn } from "../redux/auth/action";
 
@@ -39,18 +38,16 @@ export const Login = () => {
   <Box mt="50px">
      <Box w='80%' m='auto'>
        <Flex
-      minH={"100vh"}
+      minH={"80vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Box align='center'>
-              <Image src='https://upload.wikimedia.org/wikipedia/commons/9/9c/Cricbuzz_Logo.png'></Image>
+              <Image h="50px" src='https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png'></Image>
           </Box>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-        </Stack>
+        
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
@@ -60,18 +57,17 @@ export const Login = () => {
           <Stack spacing={4}>
             <form onSubmit={submitHandler}>
               <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
-                <Text mb={1}>use <b style={{color:"blue"}}>eve.holt@reqres.in</b> to successful login</Text>
+                <FormLabel>Email/Mobile :</FormLabel>
                 <Input
-                    required
-                  type="email"
+                  required
+                  type="text"
                   onChange={(e) => setUserEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl id="password">
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Password :</FormLabel>
                 <Input
-                required
+                  required
                   type="password"
                   onChange={(e) => setUserPassword(e.target.value)}
                 />
@@ -83,7 +79,7 @@ export const Login = () => {
                   justify={"space-between"}
                 >
                   <Checkbox>Remember me</Checkbox>
-                  <Link color={"blue.400"}>Forgot password?</Link>
+                  <Link to="/forgot" ><Text align="center" color="rgb(40,116,240)">Forgot password?</Text></Link>
                 </Stack>
                 <Button
                   bg={"blue.400"}
@@ -93,8 +89,9 @@ export const Login = () => {
                   }}
                   type='submit'
                 >
-                  Sign in
+                  Login
                 </Button>
+                <Link to="/register"><Text align="center" color="rgb(40,116,240)">New User? create an account</Text></Link>
               </Stack>
             </form>
           </Stack>

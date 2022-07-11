@@ -8,10 +8,15 @@ import { Link } from 'react-router-dom';
 export const Navbar = () => {
   return (
     <Box w="100%" top={0} position="fixed" zIndex={2} bgColor="rgb(38,165,65)" maxH="50px" p={2}  alignItems="center" display="flex" gap={2} >
-        <Box flex={3} display="flex" gap={2} alignItems="center" justifyContent="center">
-            <Image width="auto" maxH="30px" src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png"></Image>
-            <Text as="cite" color="white" fontSize="2xl" letterSpacing={1} fontWeight="bold" >Grocery</Text>
+        <Box flex={3}>
+            <Link to="/">
+                <Box  display="flex" gap={2} alignItems="center" justifyContent="center">
+                    <Image width="auto" maxH="30px" src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png"></Image>
+                    <Text as="cite" color="white" fontSize="2xl" letterSpacing={1} fontWeight="bold" >Grocery</Text>
+                </Box>
+            </Link>
         </Box>
+        
 
         <Box flex={6} position="relative" top={0}>
             <Search></Search>
