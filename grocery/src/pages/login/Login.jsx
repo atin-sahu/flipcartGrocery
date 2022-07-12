@@ -43,7 +43,7 @@ export const Login = () => {
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
     >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+      <Stack spacing={8} py={12} width={{base:"80%", md:"60%", lg:"45%"}}>
           <Box align='center'>
               <Image h="50px" src='https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png'></Image>
           </Box>
