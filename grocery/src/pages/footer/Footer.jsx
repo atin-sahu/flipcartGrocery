@@ -15,7 +15,7 @@ import { BsFillBagFill } from "react-icons/bs"
 
 const ListHeader = ({ children }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+    <Text fontWeight={'500'} fontSize={'sm'} mb={2} color="grey">
       {children}
     </Text>
   );
@@ -56,37 +56,75 @@ const FooterOption = ({children}) =>{
 export const Footer = () => {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
-      <Container as={Stack} maxW={'6xl'} py={10}>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+      // bg={useColorModeValue('gray.50', 'gray.900')}
+      // color={useColorModeValue('gray.700', 'gray.200')}
+      bg="rgb(23,35,55)"
+      color="white"
+      >
+      <Container as={Stack} maxW={'7xl'} py={10}  direction={{base:'column', lg:'row'}} justify='space-between'>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4, }} spacing={8} fontSize="xs">
           <Stack align={'flex-start'}>
-            <ListHeader>Company</ListHeader>
-            <Link href={'#'}>About Us</Link>
-            <Link href={'#'}>Blog</Link>
-            <Link href={'#'}>Careers</Link>
-            <Link href={'#'}>Contact Us</Link>
+            <ListHeader>ABOUT</ListHeader>
+            <Link href={"#"}>Contact Us</Link>
+            <Link href={"#"}>About Us</Link>
+            <Link href={"#"}>Careers</Link>
+            <Link href={"#"}>Flipkart Stories</Link>
+            <Link href={"#"}>Press</Link>
+            <Link href={"#"}>Flipkart Wholesale</Link>
+            <Link href={"#"}>Corporate Information</Link>
           </Stack>
 
           <Stack align={'flex-start'}>
-            <ListHeader>Support</ListHeader>
-            <Link href={'#'}>Help Center</Link>
-            <Link href={'#'}>Safety Center</Link>
-            <Link href={'#'}>Community Guidelines</Link>
+            <ListHeader>HELP</ListHeader>
+            <Link href={"#"} >Payments</Link>
+            <Link href={"#"} >Shipping</Link>
+            <Link href={"#"} >Cancellation & Returns</Link>
+            <Link href={"#"} >FAQ</Link>
+            <Link href={"#"} >Report Infringement</Link>
           </Stack>
 
           <Stack align={'flex-start'}>
-            <ListHeader>Legal</ListHeader>
-            <Link href={'#'}>Cookies Policy</Link>
-            <Link href={'#'}>Privacy Policy</Link>
-            <Link href={'#'}>Terms of Service</Link>
-            <Link href={'#'}>Law Enforcement</Link>
+            <ListHeader>POLICY</ListHeader>
+            <Link href={'#'}>Return Policy</Link>
+            <Link href={'#'}>Terms Of Use</Link>
+            <Link href={'#'}>Security</Link>
+            <Link href={'#'}>Privacy</Link>
+            <Link href={'#'}>Sitemap</Link>
+            <Link href={'#'}>EPR Compliance</Link>
           </Stack>
 
           <Stack align={'flex-start'}>
-            <ListHeader>Install App</ListHeader>
-            
+            <ListHeader>SOCIAL</ListHeader>
+            <Link href={'#'}>Facebook</Link>
+            <Link href={'#'}>Twitter</Link>
+            <Link href={'#'}>YouTube</Link>
           </Stack>
+        </SimpleGrid>
+
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 2, }} spacing={8} fontSize="xs">
+          <Stack align={'flex-start'} >
+              <ListHeader>Mail Us : </ListHeader>
+                <Text>Flipkart Internet Private Limited,</Text>
+                <Text>Buildings Alyssa, Begonia &</Text>
+                <Text>Clove Embassy Tech Village,</Text>
+                <Text>Outer Ring Road, Devarabeesanahalli Village,</Text>
+                <Text>Bengaluru, 560103,</Text>
+                <Text>Karnataka, India</Text>
+                
+            </Stack>
+
+            <Stack align={'flex-start'}>
+              <ListHeader>Registered Office Address : </ListHeader>
+                <Text>Flipkart Internet Private Limited,</Text>
+                <Text>Buildings Alyssa, Begonia &</Text>
+                <Text>Clove Embassy Tech Village,</Text>
+                <Text>Outer Ring Road, Devarabeesanahalli Village,</Text>
+                <Text>Bengaluru, 560103,</Text>
+                <Text>Karnataka, India</Text>
+                <Text>CIN : U51109KA2012PTC066107</Text>
+                <Link href='#' color="blue">Telephone: 044-45614700</Link>
+              
+            </Stack>
         </SimpleGrid>
       </Container>
 
@@ -96,41 +134,44 @@ export const Footer = () => {
         borderColor={useColorModeValue('gray.200', 'gray.700')}>
         <Container
           as={Stack}
-          maxW={'6xl'}
+          maxW={'7xl'}
           py={4}
           direction={{ base: 'column', md: 'row' }}
           spacing={4}
           justify={{ md: 'space-between' }}
           align={{ md: 'center' }}>
-            <Stack  spacing={6} columns={{base:1, md:2, lg:4}}>
+            <Stack direction={{base:'column',md:'row'}}  spacing={6} >
                 <FooterOption>
-                    <BsFillBagFill></BsFillBagFill>
-                    <Text>Become a Seller</Text>
+                    <BsFillBagFill color="yellow"></BsFillBagFill>
+                    <Link href='#'>Become a Seller</Link>
                 </FooterOption>
                 <FooterOption>
-                    <BsFillBagFill></BsFillBagFill>
-                    <Text>Become a Seller</Text>
+                    <BsFillBagFill color="yellow"></BsFillBagFill>
+                    <Link href='#'>Advertise</Link>
                 </FooterOption>
                 <FooterOption>
-                    <BsFillBagFill></BsFillBagFill>
-                    <Text>Become a Seller</Text>
+                    <BsFillBagFill color="yellow"></BsFillBagFill>
+                    <Link href='#'>Gift Cards</Link>
                 </FooterOption>
                 <FooterOption>
-                    <BsFillBagFill></BsFillBagFill>
-                    <Text>Become a Seller</Text>
+                    <BsFillBagFill color="yellow"></BsFillBagFill>
+                    <Link href='#'>Help Center</Link>
+                </FooterOption>
+                <FooterOption>
+                    <Text>© 2007-2022 Flipkart.com</Text>
                 </FooterOption>
             </Stack>
           
-          <Stack direction={'row'} spacing={6}>
-            <SocialButton children={<FaTwitter />} label={'Twitter'} href={'#'}> 
-            </SocialButton>
-            <SocialButton label={'YouTube'} href={'#'}>
-              <FaYoutube />
-            </SocialButton>
-            <SocialButton label={'Instagram'} href={'#'}>
-              <FaInstagram />
-            </SocialButton>
-          </Stack>
+            <Stack direction={'row'} spacing={6}>
+              <SocialButton children={<FaTwitter />} label={'Twitter'} href={'#'}> 
+              </SocialButton>
+              <SocialButton label={'YouTube'} href={'#'}>
+                <FaYoutube />
+              </SocialButton>
+              <SocialButton label={'Instagram'} href={'#'}>
+                <FaInstagram />
+              </SocialButton>
+            </Stack>
         </Container>
       </Box>
     </Box>
