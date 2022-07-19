@@ -1,10 +1,22 @@
 import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
+import Banner from './Banner'
+import { Products } from './Products'
 
 export const Home = () => {
   return (
-    <Box mt="50px">
-      <Text letterSpacing={1} as="em">Home page</Text>
+    <Box pt="10px" bgColor="whitesmoke">
+      <Box mx={2}  mt="70px">
+        <Banner></Banner>
+      </Box>
+
+      <Box mx={2} my={10} bgColor="white" p={5}>
+        <Box>
+          <Products></Products>
+        </Box>
+
+      </Box>
+
     </Box>
   )
 }

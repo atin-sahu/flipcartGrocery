@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element={<Login></Login>} ></Route>
         <Route path="/forgot" element={<Forgot></Forgot>} ></Route>
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </Box>
   )
 }
