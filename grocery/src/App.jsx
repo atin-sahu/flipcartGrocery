@@ -5,6 +5,7 @@ import { Footer } from "./pages/footer/Footer";
 import { Forgot } from "./pages/forgot/Forgot";
 import { Home } from "./pages/home/Home";
 import { Login } from "./pages/login/Login";
+import { Product } from "./pages/products/Product";
 import { Register } from "./pages/register/Register";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" element={<Register></Register>} ></Route>
         <Route path="/login" element={<Login></Login>} ></Route>
         <Route path="/forgot" element={<Forgot></Forgot>} ></Route>
+        <Route path="/products" element={<Product></Product>} ></Route>
       </Routes>
       {/* <Footer></Footer> */}
     </Box>

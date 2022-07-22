@@ -1,0 +1,23 @@
+{
+    "searchItems":[
+        {
+            "id":1,
+            "imgUrl":"https://rukminim1.flixcart.com/image/100/100/jw5a2kw0/sugar/m/v/m/1-sulphurless-pouch-refined-sugar-dhampure-crystal-original-imafgrrvvd4czjum.jpeg?q=100",
+            "title":"the best tuar dal pulses",
+            "sub_title":"dal",
+            "key":"pulses"
+        },{
+            "id":2,
+            "imgUrl":"https://rukminim1.flixcart.com/image/280/280/kqidx8w0/rice/r/p/x/white-everyday-na-basmati-rice-pouch-fortune-original-imag4gb4ynggnzgt.jpeg?q=70",
+            "title":"the best basamti chaval rice",
+            "sub_title":"chaval",
+            "key":"rices"
+        },{
+            "id":3,
+            "imgUrl":"https://rukminim1.flixcart.com/image/280/280/kqidx8w0/edible-oil/a/u/g/kachi-ghani-plastic-bottle-mustard-oil-fortune-original-imag4gb2njmgt7wq.jpeg?q=70",
+            "title":"the best mustered oil tel",
+            "sub_title":"oil tel",
+            "key":"oils"
+        }
+    ]
+}

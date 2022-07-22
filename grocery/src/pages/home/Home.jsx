@@ -1,7 +1,6 @@
 import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import Banner from './Banner'
-import { Products } from './Products'
 
 export const Home = () => {
   return (
@@ -12,7 +11,6 @@ export const Home = () => {
 
       <Box mx={2} my={10} bgColor="white" p={5}>
         <Box>
-          <Products></Products>
         </Box>
 
       </Box>
