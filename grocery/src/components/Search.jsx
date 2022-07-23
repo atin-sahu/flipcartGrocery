@@ -46,7 +46,7 @@ export const Search = () => {
                     {finalFilter.map((itm)=>{
                         return (
                             <Box key ={itm.id} cursor="pointer" borderBottom="1px solid black" pl={1} p={2} _hover={{backgroundColor:"whiteSmoke"}} >
-                                <Link to="/products">
+                                <Link to="/products" link={itm.key}>
                                     <Box display="flex" gap={2} onClick={()=>setFinalFilter([])}>
                                         <Box flex={3} maxW="30px">
                                             <Image src={itm.imgUrl}></Image>
