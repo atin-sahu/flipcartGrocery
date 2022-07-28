@@ -12,9 +12,7 @@ export const Home = () => {
       <Box mx={2} my={10} bgColor="white" p={5}>
         <Box>
         </Box>
-
       </Box>
-
     </Box>
   )
 }

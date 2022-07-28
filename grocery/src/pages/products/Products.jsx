@@ -1,15 +1,30 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Checkbox, SimpleGrid, Text, VStack, Image, Button} from '@chakra-ui/react'
+import { 
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Checkbox,
+  SimpleGrid,
+  Text,
+  VStack,
+  Image,
+  Button,
+  Select,
+  } from '@chakra-ui/react'
+  import { Link, useSearchParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import aixos from "axios";
 
 
-export const Product = () => {
+export const Products = () => {
 
   const [products, setProducts] = useState([]);
 
   const getProducts = async ()=>{
     let data = await aixos.get("http://localhost:8080/products")
-    .then((data)=>data.data.pulses);
+    .then((data)=>data.data);
     console.log("products",data);
     setProducts(data);
   }
@@ -159,12 +174,17 @@ export const Product = () => {
             {products.map((item)=>{
               return <Box key={item.id} p={2} _hover={{boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}} borderRadius={5}>
                 <VStack spacing={3}>
-                  <Box>
-                    <Image height="120px" src={item.imgUrl[0]}></Image>
+                  
+                  <Box >
+                    <Link to={`/products/${item.id}`} >
+                      <Image margin="auto" height="120px" src={item.imgUrl[0]}></Image>
+                    </Link>
                   </Box>
                   <Box display="flex" flexDirection="column" gap={2}>
                     <Box h="50px">
-                      <Text noOfLines={2}>{item.title}</Text>
+                      <Link to={`/products/${item.id}`}>
+                        <Text noOfLines={2}>{item.title}</Text>
+                      </Link>
                     </Box>
                     <Box display="flex" gap={2} >
                       <Text noOfLines={1} fontWeight="semibold">₹ {item.price}</Text>
@@ -172,18 +192,29 @@ export const Product = () => {
                       <Text noOfLines={1} color="rgb(38,165,65)" fontWeight="semibold">{item.disscount}% off</Text>
                     </Box>
                   </Box>
-                  <Box display="flex" gap={2} >
-                    {item.qty.length > 0 ? (
-                    <Button disabled={item.qty.length == 1}  variant="outline" bgColor="white" >
-                      <Text color="black">{item.qty[0]} Kg</Text>
-                    </Button>) : (
-                      <Button  variant="outline" bgColor="white" >
-                      <Text color="black">{item.qty[0]} Kg</Text>
-                    </Button>
-                    ) }
-                    <Button  variant="outline" bgColor="white" >
-                      <Text color="rgb(40,116,240)">ADD Item</Text>
-                    </Button>
+                 
+                  <Box width="100%" display="flex" gap={2} alignItems="center" textAlign="center">
+                    <Box flex={6} border="1px solid black"  borderRadius={5} >
+                      {item.qty.length == 1 ? (
+                      <Box>
+                        <Button disabled variant="unstyled"  size="sm">
+                          <Text color="black">{item.qty[0]} {item.unit}</Text>
+                        </Button>
+                      </Box>) : (
+                        <Box p={1}>
+                          <Select variant="unstyled" >
+                            {item.qty.map((q)=>{
+                              return <option key={q} value='option1'>{q} {item.unit}</option>
+                            })}
+                          </Select>
+                      </Box>
+                      ) }
+                    </Box>
+                    <Box flex={6} border="1px solid black"  borderRadius={5}  >
+                      <Button  variant="unstyled"  size="sm">
+                        <Text color="rgb(40,116,240)">Add Item</Text>
+                      </Button>
+                    </Box>
                   </Box>
                 </VStack>
 
