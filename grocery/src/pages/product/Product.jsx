@@ -5,10 +5,12 @@ import { useParams } from 'react-router-dom';
 
 
 export const Product = () => {
+
   const [item,setItem] = useState({});
-  // const [imgIndex,setImgIndex] = useState(0);
+  console.log("item?.imgUrl?.[0]",item?.imgUrl?.[0]);
+  const [hoverImgUrl,setHoverImgUrl] = useState(`${item?.imgUrl?.[0]}`);
   const  { id }  = useParams();
-  
+  console.log("hoverImgUrl",hoverImgUrl);
 
   useEffect(() => {
     getData();
@@ -18,10 +20,7 @@ export const Product = () => {
   const getData = async () => {
     const data = await axios.get(`http://localhost:8080/products/${id}`)
     .then((data) => setItem(data.data))
-    // console.log("single product",data);
-    console.log("setItem in",item);
   };
-  
   console.log("setItem out",item);
 
   return (
@@ -31,13 +30,13 @@ export const Product = () => {
 
           <Box flex={{base:6,md:5}} >
             <Box display="flex" flexDirection={{base:"column-reverse", md:"row"}} >
-              <Box flex={{base:6,md:3}} >
+              <Box flex={{base:6,md:2}} >
                 <Box display="flex" flexDirection={{base:"row", md:"column"}} >
                   {
                     
                     item?.imgUrl?.map((im)=>(
-                       <Box key={im} border="1px solid gray" minW="100px" minH="100px" display="flex"  justifyContent="center" alignItems="center">
-                        <Image maxH="80px" maxW="80%" src={im} />
+                       <Box _hover={{cursor:"pointer"}} onMouseEnter={()=>setHoverImgUrl(im)} key={im} border="1px solid gray" minW="80px" minH="80px" display="flex"  justifyContent="center" alignItems="center">
+                        <Image maxH="60px" maxW="80%" src={im} />
                       </Box>
                     ))
                   }
@@ -46,8 +45,8 @@ export const Product = () => {
 
               </Box>
 
-              <Box minH="250px" minW="250px" display="flex" flex={{base:6,md:9}} border="1px solid gray" justifyContent="center" alignItems="center">
-              <Image src="" />
+              <Box minH="250px" maxH="250px" minW="300px" maxW="300px" display="flex" flex={{base:6,md:10}} border="1px solid gray" justifyContent="center" alignItems="center">
+                <Image minW="40%" src={hoverImgUrl} />
               </Box>
 
             </Box>
