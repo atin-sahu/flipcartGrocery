@@ -31,23 +31,23 @@ export const Product = () => {
 
           <Box flex={{base:6,md:5}} >
             <Box display="flex" flexDirection={{base:"column-reverse", md:"row"}} >
-              <Box flex={{base:6,md:2}} >
-                {/* <Stack direction={{base:"row", md:"column"}} border="1px solid black" > */}
+              <Box flex={{base:6,md:3}} >
+                <Box display="flex" flexDirection={{base:"row", md:"column"}} >
                   {
                     
                     item?.imgUrl?.map((im)=>(
-                       <Box key={im} border="1px solid black" >
-                        <Image src={im} />
+                       <Box key={im} border="1px solid gray" minW="100px" minH="100px" display="flex"  justifyContent="center" alignItems="center">
+                        <Image maxH="80px" maxW="80%" src={im} />
                       </Box>
                     ))
                   }
                   
-                {/* </Stack> */}
+                </Box>
 
               </Box>
 
-              <Box display="flex" flex={{base:6,md:10}} border="1px solid gray" justifyContent="center" alignItems="center">
-                <Text>atin</Text>
+              <Box minH="250px" minW="250px" display="flex" flex={{base:6,md:9}} border="1px solid gray" justifyContent="center" alignItems="center">
+              <Image src="" />
               </Box>
 
             </Box>
