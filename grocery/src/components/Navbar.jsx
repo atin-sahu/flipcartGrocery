@@ -3,6 +3,7 @@ import React from 'react'
 import { Search } from './Search'
 // import { FaUser } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 export const Navbar = () => {
@@ -26,6 +27,14 @@ export const Navbar = () => {
             {/* <Box>
                 <FaUser cursor="pointer" ></FaUser>
             </Box> */}
+            <Link to="/cart">
+                <Box display="flex" alignItems="center" gap={1}>
+                    <Box >
+                        <FaShoppingCart></FaShoppingCart>
+                    </Box>
+                    <Text >Cart</Text>
+                </Box>
+           </Link>
             <Box>
                <Link to="/register"><Text >New User</Text></Link>
             </Box>

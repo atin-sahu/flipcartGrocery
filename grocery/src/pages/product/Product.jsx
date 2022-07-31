@@ -46,7 +46,7 @@ export const Product = () => {
               </Box>
 
               <Box minH="250px" maxH="250px" minW="300px" maxW="300px" display="flex"  border="1px solid gray" justifyContent="center" alignItems="center">
-                <Image minW="40%" maxW="70%" src={item?.imgUrl?.[hoverImgIdx]} />
+                <Image minW="40%" maxW="70%" maxH="230px" src={item?.imgUrl?.[hoverImgIdx]} />
               </Box>
 
             </Box>

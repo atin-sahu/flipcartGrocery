@@ -16,6 +16,7 @@ import {
   import { Link, useSearchParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import aixos from "axios";
+import axios from 'axios';
 
 
 export const Products = () => {
@@ -32,6 +33,24 @@ export const Products = () => {
   useEffect(()=>{
     getProducts();
   },[])
+
+  const setToCart = async (cartItem)=>{
+    let cartData = await axios.get("http://localhost:8080/cart")
+    .then((cartData)=>cartData.data);
+    let flag = false;
+    let isPresent = cartData.map((item)=>{
+      if(item.id == cartItem.id){
+        flag = true;
+        return
+      }
+    })
+    if(flag){
+      alert("Item Already Added To Card");
+    }
+    let cartProduct = await axios.post(`http://localhost:8080/cart`,cartItem)
+    .then((cartProduct)=>cartProduct.data);
+    alert("Item Added Successfull")
+  }
 
 
 
@@ -211,7 +230,7 @@ export const Products = () => {
                       ) }
                     </Box>
                     <Box flex={6} border="1px solid black"  borderRadius={5}  >
-                      <Button  variant="unstyled"  size="sm">
+                      <Button onClick={()=>setToCart(item)}  variant="unstyled"  size="sm">
                         <Text color="rgb(40,116,240)">Add Item</Text>
                       </Button>
                     </Box>
