@@ -22,14 +22,9 @@ function App() {
         <Route path="/login" element={<Login></Login>} ></Route>
         <Route path="/cart" element={<Cart></Cart>} ></Route>
         <Route path="/forgot" element={<Forgot></Forgot>} ></Route>
-        <Route path="/products" element={<Products></Products>} ></Route>
-        <Route path="/pulses" element={<Products></Products>} ></Route>
-        <Route path="/rice" element={<Products></Products>} ></Route>
-        <Route path="/oils" element={<Products></Products>} ></Route>
-        <Route path="/products/:id" element={<Product ></Product>}></Route>
-        <Route path="/pulses/:id" element={<Product></Product>}></Route>
-        <Route path="/rice/:id" element={<Product></Product>}></Route>
-        <Route path="/oils/:id" element={<Product></Product>}></Route>
+        <Route path="/all-products" element={<Home></Home>} ></Route>
+        <Route path="/all-products/:key" element={<Products></Products>} ></Route>
+        <Route path="/all-products/:key/:id" element={<Product></Product>} ></Route>
       </Routes>
 
       {/* <Footer></Footer> */}

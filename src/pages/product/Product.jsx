@@ -10,7 +10,8 @@ export const Product = () => {
 
   const [item,setItem] = useState({});
   const [hoverImgIdx,setHoverImgIdx] = useState(0);
-  const  { id }  = useParams();
+  const  {key,id}   = useParams();
+  console.log("key,id===>",key,id);
 
   useEffect(() => {
     getData();
@@ -18,7 +19,7 @@ export const Product = () => {
 
   
   const getData = async () => {
-    const data = await axios.get(`http://localhost:8080/products/${id}`)
+    const data = await axios.get(`http://localhost:8080/${key}/${id}`)
     .then((data) => setItem(data.data));
   };
   console.log("setItem out",item);

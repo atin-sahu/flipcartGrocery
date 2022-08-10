@@ -12,7 +12,7 @@
       "imgUrl": "https://rukminim1.flixcart.com/image/280/280/kqidx8w0/rice/r/p/x/white-everyday-na-basmati-rice-pouch-fortune-original-imag4gb4ynggnzgt.jpeg?q=70",
       "title": "the best basamti chaval rice",
       "sub_title": "chaval",
-      "key": "rices"
+      "key": "rice"
     },
     {
       "id": 3,
@@ -20,6 +20,13 @@
       "title": "the best mustered oil tel",
       "sub_title": "oil tel",
       "key": "oils"
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://rukminim1.flixcart.com/image/280/280/kqidx8w0/edible-oil/a/u/g/kachi-ghani-plastic-bottle-mustard-oil-fortune-original-imag4gb2njmgt7wq.jpeg?q=70",
+      "title": "all products are here",
+      "sub_title": "all products",
+      "key": "products"
     }
   ],
   "products": [
@@ -1798,5 +1805,41 @@
       "description": "The Tata Sampann toor dal helps you prepare delicious sambar, dal tadka, dal fry, and many other lip-smacking dishes. Enriched with nutrients, this toor dal is both healthy and delicious. Furthermore, it does not go through any artificial polishing with water, oil, or leather, thereby retaining its goodness and nutritional benefits. Delicious and Healthy"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 2,
+      "imgUrl": [
+        "https://rukminim1.flixcart.com/image/128/128/ju04akw0/pulses/g/g/f/500-urad-sabut-urad-dal-rajdhani-original-imaff8awhjtufabm.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/ju04akw0/pulses/g/g/f/500-urad-sabut-urad-dal-rajdhani-original-imaff8awktneun6m.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/l3j2cnk0/pulses/i/5/4/500-urad-sabut-1-urad-dal-rajdhani-original-imagempekbafecpe.jpeg?q=70"
+      ],
+      "title": "Rajdhani Black Urad Dal (Whole)",
+      "brand": "Rajdhani",
+      "price": 200,
+      "old_price": 250,
+      "disscount": 20,
+      "qty": [
+        1
+      ],
+      "unit": "kg",
+      "available_offers": [
+        "Bank Offer10% off on Axis Bank Credit Cards, up to ₹250. On orders of ₹2000 and above",
+        "Bank Offer5% off on Flipkart Axis Bank Co Brand Card, up to ₹125. On orders of ₹2000 and above",
+        "Bank Offer10% off on Kotak Bank Credit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Unlock additional steal deals on orders above ₹600",
+        "Unlock additional steal deals on orders above ₹1200",
+        "Bank Offer10% off on Citi Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Bank Offer10% off on RBL Bank Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above"
+      ],
+      "EXD": "12 Jun 2023",
+      "MFD": "18 Jun 2022",
+      "services": [
+        "Easy Doorstep Return",
+        "Schedule your delivery",
+        "Cash on Delivery available"
+      ],
+      "seller": "SuperComNet",
+      "description": "The Tata Sampann toor dal helps you prepare delicious sambar, dal tadka, dal fry, and many other lip-smacking dishes. Enriched with nutrients, this toor dal is both healthy and delicious. Furthermore, it does not go through any artificial polishing with water, oil, or leather, thereby retaining its goodness and nutritional benefits. Delicious and Healthy"
+    }
+  ]
 }
