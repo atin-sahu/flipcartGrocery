@@ -1807,6 +1807,78 @@
   ],
   "cart": [
     {
+      "id": 1,
+      "imgUrl": [
+        "https://rukminim1.flixcart.com/image/128/128/kzsqykw0/pulses/z/z/u/-original-imagbq2snu7rfhsa.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/knknc7k0/pulses/y/0/q/toor-dal-toor-dal-tata-sampann-original-imag27vfgkuq5vfq.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/knknc7k0/pulses/r/p/2/toor-dal-toor-dal-tata-sampann-original-imag27vfsyv2w9gv.jpeg?q=70"
+      ],
+      "title": "Tata Sampann Toor/Arhar Dal",
+      "brand": "TATA",
+      "price": 119,
+      "old_price": 160,
+      "disscount": 25,
+      "qty": [
+        1
+      ],
+      "unit": "kg",
+      "available_offers": [
+        "Bank Offer10% off on Axis Bank Credit Cards, up to ₹250. On orders of ₹2000 and above",
+        "Bank Offer5% off on Flipkart Axis Bank Co Brand Card, up to ₹125. On orders of ₹2000 and above",
+        "Bank Offer10% off on Kotak Bank Credit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Unlock additional steal deals on orders above ₹600",
+        "Unlock additional steal deals on orders above ₹1200",
+        "Bank Offer10% off on Citi Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Bank Offer10% off on RBL Bank Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above"
+      ],
+      "EXD": "12 Jun 2023",
+      "MFD": "18 Jun 2022",
+      "services": [
+        "Easy Doorstep Return",
+        "Schedule your delivery",
+        "Cash on Delivery available"
+      ],
+      "seller": "SuperComNet",
+      "description": "The Tata Sampann toor dal helps you prepare delicious sambar, dal tadka, dal fry, and many other lip-smacking dishes. Enriched with nutrients, this toor dal is both healthy and delicious. Furthermore, it does not go through any artificial polishing with water, oil, or leather, thereby retaining its goodness and nutritional benefits. Delicious and Healthy"
+    },
+    {
+      "id": 7,
+      "imgUrl": [
+        "https://rukminim1.flixcart.com/image/128/128/kw104nk0/edible-oil/n/n/5/-original-imag8sfjknvqs4md.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/kzhbfrk0/edible-oil/v/s/c/-original-imagbh7v8nf7yz6h.jpeg?q=70",
+        "https://rukminim1.flixcart.com/image/128/128/kzhbfrk0/edible-oil/3/u/q/-original-imagbh7vuzubqwt4.jpeg?q=70"
+      ],
+      "title": "Dalda Kachi Ghani Mustard Oil PET Bottle ",
+      "brand": "Dalda",
+      "price": 100,
+      "old_price": 200,
+      "disscount": 50,
+      "qty": [
+        1,
+        2,
+        5
+      ],
+      "unit": "L",
+      "available_offers": [
+        "Bank Offer10% off on Axis Bank Credit Cards, up to ₹250. On orders of ₹2000 and above",
+        "Bank Offer5% off on Flipkart Axis Bank Co Brand Card, up to ₹125. On orders of ₹2000 and above",
+        "Bank Offer10% off on Kotak Bank Credit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Unlock additional steal deals on orders above ₹600",
+        "Unlock additional steal deals on orders above ₹1200",
+        "Bank Offer10% off on Citi Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above",
+        "Bank Offer10% off on RBL Bank Credit and Debit Cards, up to ₹250. On orders of ₹2,000 and above"
+      ],
+      "EXD": "12 Jun 2023",
+      "MFD": "18 Jun 2022",
+      "services": [
+        "Easy Doorstep Return",
+        "Schedule your delivery",
+        "Cash on Delivery available"
+      ],
+      "seller": "SuperComNet",
+      "description": "The Tata Sampann toor dal helps you prepare delicious sambar, dal tadka, dal fry, and many other lip-smacking dishes. Enriched with nutrients, this toor dal is both healthy and delicious. Furthermore, it does not go through any artificial polishing with water, oil, or leather, thereby retaining its goodness and nutritional benefits. Delicious and Healthy"
+    },
+    {
       "id": 2,
       "imgUrl": [
         "https://rukminim1.flixcart.com/image/128/128/ju04akw0/pulses/g/g/f/500-urad-sabut-urad-dal-rajdhani-original-imaff8awhjtufabm.jpeg?q=70",

@@ -27,7 +27,7 @@ function App() {
         <Route path="/all-products/:key/:id" element={<Product></Product>} ></Route>
       </Routes>
 
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </Box>
   )
 }

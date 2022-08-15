@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   Select,
+  Center,
   } from '@chakra-ui/react'
   import { Link, useParams, useSearchParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
@@ -18,6 +19,7 @@ export const Products = () => {
 
   const [products, setProducts] = useState([]);
   const [searchParams,setSearchParams] = useSearchParams();
+  const [page,setPage] = useState(Number(searchParams.get("page") || 1));
   const {key} = useParams();
   console.log("search key",key);
 
@@ -26,14 +28,18 @@ export const Products = () => {
     .then((data)=>data.data);
     console.log("products",data);
     setProducts(data);
+    console.log("params",params,params.page);
   }
 
   useEffect(()=>{
     const params = {
-      brand:searchParams.getAll("brand")
+      brand:searchParams.getAll("brand"),
+      page:searchParams.get("page")
     }
     getProducts(params);
-  },[key])
+    setSearchParams(params);
+  },[key,page,searchParams])
+
 
   const setToCart = async (cartItem)=>{
     let cartData = await axios.get("http://localhost:8080/cart")
@@ -113,6 +119,12 @@ export const Products = () => {
               </Box>
             })}
           </SimpleGrid>
+          <Center>
+            <Box display='flex' width='30%' justifyContent='space-around'>
+              <Button disabled={page==1} colorScheme='blue' onClick={()=>(setPage(page-1))} > Prev</Button>
+              <Button colorScheme='blue' onClick={()=>(setPage(page+1))} >Next</Button>
+            </Box>
+          </Center>
         </Box>
       </Box>
     </Box>
