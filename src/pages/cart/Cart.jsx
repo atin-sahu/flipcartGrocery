@@ -91,8 +91,11 @@ export const Cart = () => {
             </Box>
           </Box>
         </Box> ) : (
-          <Box bgColor="white" m="auto">
-            <Text>Your cart is Empty</Text>
+          <Box  m="auto" h="80vh" >
+            <Box align="center" pt="5vh">
+              <Image w="35%" src='https://assets.materialup.com/uploads/66fb8bdf-29db-40a2-996b-60f3192ea7f0/preview.png'></Image>
+            </Box>
+            <Text pt={2} align="center" fontSize="4xl" fontFamily="sans-serif" fontWeight="semibold" color="red">Your Cart Is Empty !</Text>
           </Box>
         )}
     </Box>

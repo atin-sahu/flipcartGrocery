@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { MdLocalOffer } from "react-icons/md";
 import { BsStopwatch } from "react-icons/bs";
 import { RiRecycleLine } from "react-icons/ri";
+import { AddToCart } from '../../components/AddToCart';
 
 export const Product = () => {
 
@@ -46,10 +47,13 @@ export const Product = () => {
 
               </Box>
 
-              <Box minH="250px" maxH="250px" minW="300px" maxW="300px" display="flex"  border="1px solid gray" justifyContent="center" alignItems="center">
+              <Box minH="250px" maxH="250px" minW="300px" maxW="300px" display="flex"   justifyContent="center" alignItems="center">
                 <Image minW="40%" maxW="70%" maxH="230px" src={item?.imgUrl?.[hoverImgIdx]} />
               </Box>
 
+            </Box>
+            <Box m="auto" w="80%" align="center" mt={5} border="1px solid blue">
+              <AddToCart Item={item}></AddToCart>
             </Box>
           </Box>
 

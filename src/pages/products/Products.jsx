@@ -13,53 +13,34 @@ import React, { useEffect, useState } from 'react'
 import aixos from "axios";
 import axios from 'axios';
 import { FilterComponent } from '../../components/FilterComponent';
+import { AddIcon } from '@chakra-ui/icons';
+import { AddToCart } from '../../components/AddToCart';
 
 
 export const Products = () => {
 
   const [products, setProducts] = useState([]);
   const [searchParams,setSearchParams] = useSearchParams();
-  const [page,setPage] = useState(Number(searchParams.get("page") || 1));
+  const [page,setPage] = useState(1);
   const {key} = useParams();
-  console.log("search key",key);
+  // console.log("search key",key);
 
   const getProducts = async (params)=>{
-    let data = await aixos.get(`http://localhost:8080/${key}`,{ params })
+    let data = await aixos.get(`http://localhost:8080/${key}?_page=${page}&_limit=5`,{ params })
     .then((data)=>data.data);
-    console.log("products",data);
+    // console.log("products",data);
     setProducts(data);
-    console.log("params",params,params.page);
+    console.log("params",params);
   }
 
   useEffect(()=>{
     const params = {
       brand:searchParams.getAll("brand"),
-      page:searchParams.get("page")
+      // _page:page
     }
     getProducts(params);
     setSearchParams(params);
   },[key,page,searchParams])
-
-
-  const setToCart = async (cartItem)=>{
-    let cartData = await axios.get("http://localhost:8080/cart")
-    .then((cartData)=>cartData.data);
-    let flag = false;
-    let isPresent = cartData.map((item)=>{
-      if(item.id == cartItem.id){
-        flag = true;
-        return
-      }
-    })
-    if(flag){
-      alert("Item Already Added To Card");
-    }
-    let cartProduct = await axios.post(`http://localhost:8080/cart`,cartItem)
-    .then((cartProduct)=>cartProduct.data);
-    alert("Item Added Successfull")
-  }
-
-
 
   return (
     <Box mt="50px" bgColor="whitesmoke" p={2}>
@@ -109,9 +90,10 @@ export const Products = () => {
                       ) }
                     </Box>
                     <Box flex={6} border="1px solid black"  borderRadius={5}  >
-                      <Button onClick={()=>setToCart(item)}  variant="unstyled"  size="sm">
+                      {/* <Button onClick={()=>setToCart(item)}  variant="unstyled"  size="sm">
                         <Text color="rgb(40,116,240)">Add Item</Text>
-                      </Button>
+                      </Button> */}
+                      <AddToCart Item={item}></AddToCart>
                     </Box>
                   </Box>
                 </VStack>

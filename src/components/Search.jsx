@@ -14,7 +14,7 @@ export const Search = () => {
     const getItem =async ()=>{
         const data =await axios.get("http://localhost:8080/searchItems")
         .then((data)=>data.data);
-        console.log(data);
+        // console.log(data);
         SetItem(data);
 
     }
