@@ -11,11 +11,9 @@ import {
   import { Link, useParams, useSearchParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import aixos from "axios";
-import axios from 'axios';
 import { FilterComponent } from '../../components/FilterComponent';
-import { AddIcon } from '@chakra-ui/icons';
 import { AddToCart } from '../../components/AddToCart';
-
+import { Sorting } from '../../components/Sorting';
 
 export const Products = () => {
 
@@ -24,11 +22,12 @@ export const Products = () => {
   const [page,setPage] = useState(1);
   const {key} = useParams();
   // console.log("search key",key);
+  
 
   const getProducts = async (params)=>{
     let data = await aixos.get(`http://localhost:8080/${key}?_page=${page}&_limit=5`,{ params })
     .then((data)=>data.data);
-    // console.log("products",data);
+    console.log("data",data);
     setProducts(data);
     console.log("params",params);
   }
@@ -36,7 +35,7 @@ export const Products = () => {
   useEffect(()=>{
     const params = {
       brand:searchParams.getAll("brand"),
-      // _page:page
+      page:page,
     }
     getProducts(params);
     setSearchParams(params);
@@ -45,8 +44,10 @@ export const Products = () => {
   return (
     <Box mt="50px" bgColor="whitesmoke" p={2}>
       <Box display="flex" gap={2}>
-
-        <FilterComponent getdataFunc={getProducts}></FilterComponent>
+        <Box>
+          <Sorting getdataFunc={getProducts}></Sorting>
+          <FilterComponent getdataFunc={getProducts}></FilterComponent>
+        </Box>
 
         <Box  flex={11} p={2} boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
           <SimpleGrid columns={{base:1, sm:2, md:3, lg:4}} rowGap={3} columnGap={5} >
@@ -66,7 +67,7 @@ export const Products = () => {
                       </Link>
                     </Box>
                     <Box display="flex" gap={2} >
-                      <Text noOfLines={1} fontWeight="semibold">₹ {item.price}</Text>
+                      <Text noOfLines={1} fontWeight="semibold">₹ {(item.old_price*(100-item.disscount))/100}</Text>
                       <Text noOfLines={1} color="silver" as="del">₹ {item.old_price}</Text>
                       <Text noOfLines={1} color="rgb(38,165,65)" fontWeight="semibold">{item.disscount}% off</Text>
                     </Box>
@@ -102,9 +103,10 @@ export const Products = () => {
             })}
           </SimpleGrid>
           <Center>
-            <Box display='flex' width='30%' justifyContent='space-around'>
+            <Box display='flex' width='30%' justifyContent='space-around' alignItems="center">
               <Button disabled={page==1} colorScheme='blue' onClick={()=>(setPage(page-1))} > Prev</Button>
-              <Button colorScheme='blue' onClick={()=>(setPage(page+1))} >Next</Button>
+              <Text fontWeight="semibold" fontSize="md">{page}</Text>
+              <Button disabled={products.length<5} colorScheme='blue' onClick={()=>(setPage(page+1))} >Next</Button>
             </Box>
           </Center>
         </Box>

@@ -30,7 +30,7 @@ export const FilterComponent = ({getdataFunc}) => {
             }
             getdataFunc(params);
         }
-    },[brandValues,searchParams,setSearchParams])
+    },[brandValues,searchParams])
 
 
   return (
