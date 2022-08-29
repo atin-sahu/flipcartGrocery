@@ -52,7 +52,7 @@ export const Sorting = ({getdataFunc}) => {
                             <RadioGroup defaultValue={sortValue} onChange={sortHandler}>
                                 <Stack direction="column">
                                     <Radio value="price">Low To High</Radio>
-                                    {/* <Radio value="price">High To Low</Radio> */}
+                                    <Radio value="price">High To Low</Radio>
                                 </Stack>
                             </RadioGroup>
                         </VStack>

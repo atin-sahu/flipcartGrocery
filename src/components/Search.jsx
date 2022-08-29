@@ -12,7 +12,7 @@ export const Search = () => {
     const [finalFilter, setFinalFilter] = useState([]);
 
     const getItem =async ()=>{
-        const data =await axios.get("http://localhost:8080/searchItems")
+        const data =await axios.get("http://localhost:5000/searches")
         .then((data)=>data.data);
         // console.log(data);
         SetItem(data);
@@ -45,8 +45,8 @@ export const Search = () => {
                 <Box position="absolute" w="100%" top="32px" bgColor="white" p={2} border="1px solid black" borderRadius={3} height="400px" overflow="hidden" overflowY="auto"  css={{ '&::-webkit-scrollbar': {display:"none"},}} >
                     {finalFilter.map((itm)=>{
                         return (
-                            <Box key ={itm.id} cursor="pointer" borderBottom="1px solid black" pl={1} p={2} _hover={{backgroundColor:"whiteSmoke"}} >
-                                <Link to={`all-products/${itm.key}`} >
+                            <Box key ={itm._id} cursor="pointer" borderBottom="1px solid black" pl={1} p={2} _hover={{backgroundColor:"whiteSmoke"}} >
+                                <Link target="_blank" to={`${itm.key}`} >
                                     <Box display="flex" gap={2} onClick={()=>setFinalFilter([])}>
                                         <Box flex={3} maxW="30px">
                                             <Image src={itm.imgUrl}></Image>

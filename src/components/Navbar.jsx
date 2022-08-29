@@ -24,9 +24,6 @@ export const Navbar = () => {
         </Box>
 
         <Box color='white' flex={3} letterSpacing={1} fontFamily="heading" fontWeight="bold" display="flex" flexDirection="row-reverse" justifyContent="space-evenly" alignItems="center">
-            {/* <Box>
-                <FaUser cursor="pointer" ></FaUser>
-            </Box> */}
             <Link to="/cart">
                 <Box display="flex" alignItems="center" gap={1}>
                     <Box >

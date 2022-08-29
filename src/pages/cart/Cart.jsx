@@ -10,7 +10,7 @@ export const Cart = () => {
   const [off, setOff] = useState(0);
 
   const getCartData = async()=>{
-    let data = await axios.get("http://localhost:8080/cart")
+    let data = await axios.get("http://localhost:5000/carts")
     .then(data => data.data);
     let MRP = data.reduce((acc,curr)=>acc+curr.old_price,0);
     console.log("MRP",MRP);
@@ -24,7 +24,7 @@ export const Cart = () => {
   
 
   const deleteCartItem = async(id)=>{
-     await axios.delete(`http://localhost:8080/cart/${id}`);
+     await axios.delete(`http://localhost:5000/carts/${id}`);
      getCartData();
   }
 
@@ -50,17 +50,15 @@ export const Cart = () => {
                         <Text fontWeight="semibold">{item.title}</Text>
                         <Text>{item.unit}</Text>
                         <Box display="flex" gap={5} pt={4} alignItems="center">
-                          {/* <Text fontWeight="semibold" fontSize="2xl">₹{item.price}</Text> */}
                           <Text fontWeight="semibold" fontSize="2xl">₹{item.old_price-(item.old_price)/100*item.disscount}</Text>
                           <Text as="del" >₹{item.old_price}</Text>
-                          {/* <Text color="green">{item.disscount} off</Text> */}
                           <Text color="green">₹{(item.old_price)/100*item.disscount} off</Text>
                         </Box>
                       </Box>
                     </Box>
                     <Box flex={3} >
                       <Box border="1px solid black" borderRadius={5} align="center" mt={4}>
-                        <Button onClick={()=>deleteCartItem(item.id)} variant="unstyled" rightIcon={<DeleteIcon></DeleteIcon>}>Remove</Button>
+                        <Button onClick={()=>deleteCartItem(item._id)} variant="unstyled" rightIcon={<DeleteIcon></DeleteIcon>}>Remove</Button>
                       </Box>
                     </Box>
                   </Box>

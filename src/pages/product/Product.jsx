@@ -20,7 +20,7 @@ export const Product = () => {
 
   
   const getData = async () => {
-    const data = await axios.get(`http://localhost:8080/${key}/${id}`)
+    const data = await axios.get(`http://localhost:5000/${key}/${id}`)
     .then((data) => setItem(data.data));
   };
   console.log("setItem out",item);
@@ -112,9 +112,6 @@ export const Product = () => {
                 {
                   item?.services?.map((ser,index)=>{
                     return <Box key={index} display="flex" gap={3}>
-                      {/* <Box display="flex" alignItems="center">
-                        <RiRecycleLine></RiRecycleLine>
-                      </Box> */}
                       <Text fontWeight="semibold" fontSize="sm">{ser}</Text>
                     </Box>
                   })

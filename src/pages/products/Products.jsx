@@ -23,9 +23,8 @@ export const Products = () => {
   const {key} = useParams();
   // console.log("search key",key);
   
-
   const getProducts = async (params)=>{
-    let data = await aixos.get(`http://localhost:8080/${key}?_page=${page}&_limit=5`,{ params })
+    let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
     .then((data)=>data.data);
     console.log("data",data);
     setProducts(data);
@@ -44,19 +43,19 @@ export const Products = () => {
   return (
     <Box mt="50px" bgColor="whitesmoke" p={2}>
       <Box display="flex" gap={2}>
-        <Box>
+        <Box flex={2.2}>
           <Sorting getdataFunc={getProducts}></Sorting>
           <FilterComponent getdataFunc={getProducts}></FilterComponent>
         </Box>
 
-        <Box  flex={11} p={2} boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
+        <Box flex={9.8} p={2} boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
           <SimpleGrid columns={{base:1, sm:2, md:3, lg:4}} rowGap={3} columnGap={5} >
             {products.map((item)=>{
               return <Box key={item.id} p={2} _hover={{boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}} borderRadius={5}>
                 <VStack spacing={3}>
                   
                   <Box >
-                    <Link to={`/all-products/${key}/${item.id}`} >
+                    <Link to={`/${key}/${item._id}`} >
                       <Image margin="auto" height="120px" src={item.imgUrl[0]}></Image>
                     </Link>
                   </Box>
@@ -91,9 +90,6 @@ export const Products = () => {
                       ) }
                     </Box>
                     <Box flex={6} border="1px solid black"  borderRadius={5}  >
-                      {/* <Button onClick={()=>setToCart(item)}  variant="unstyled"  size="sm">
-                        <Text color="rgb(40,116,240)">Add Item</Text>
-                      </Button> */}
                       <AddToCart Item={item}></AddToCart>
                     </Box>
                   </Box>
