@@ -13,14 +13,16 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { signIn } from "../redux/auth/action";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../../redux/auth/action";
 
 export const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const isAuth = useSelector((store)=>store.authReducer);
 
-  // const dispatch = useDispatch();
+  console.log("isAuth login",isAuth.auth);
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -30,8 +32,7 @@ export const Login = () => {
       password: userPassword,
     };
     console.log(payload);
-
-    // dispatch(signIn(payload));
+    dispatch(signIn(payload));
   };
 
   return (
