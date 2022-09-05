@@ -1,3 +1,4 @@
+import { LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Box,
@@ -10,27 +11,57 @@ import {
   Text,
   useColorModeValue,
   Image,
+  InputRightElement,
+  InputGroup,
+  FormErrorMessage,
+  FormHelperText,
+  InputLeftElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import axios from "axios";
 
 export const Register = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [userCpassword, setUserCpassword] = useState("");
+  const [show_pass, setShow_pass] = useState(false)
+  const [show_C_pass, setShow_C_pass] = useState(false)
+  const [isError, setIsError] = useState(true);
 
-  const submitHandler = (e) => {
+  const handle_C_password = (e) =>{
+    const Cpassword = e.target.value;
+    setUserCpassword(Cpassword);
+    if(userPassword != Cpassword){
+      setIsError(true);
+    }else{
+      setIsError(false);
+    }
+  }
+  
+  const handleClick_pass = ()=>{setShow_pass(!show_pass)}
+  const handleClick_C_pass = ()=>{setShow_C_pass(!show_C_pass)}
+
+  const submitHandler = async(e) => {
     e.preventDefault();
 
-    const payload = {
+    const details = {
       name:userName,
       email: userEmail,
       password: userPassword,
-      cPassword: userCpassword,
     };
-
-    console.log(payload);
+    
+    try {
+      let res = await axios.post("http://localhost:5000/register",details)
+      console.log(res);
+      alert("Registration successfull !");
+    } catch (error) {
+      alert(error.response.data.message);
+      console.log(error);
+    }
 
   };
 
@@ -58,35 +89,66 @@ export const Register = () => {
             <form onSubmit={submitHandler}>
             <FormControl id="name" mb={3}>
                 <FormLabel mb={0}>Name :</FormLabel>
-                <Input
-                  required
-                  type="text"
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-              </FormControl>
+                <InputGroup>
+                  <InputLeftElement>
+                    <FaUser></FaUser>
+                  </InputLeftElement>
+                  <Input
+                    required
+                    type="text"
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </InputGroup>
+            </FormControl>
               <FormControl id="email" mb={3}>
-                <FormLabel mb={0}>Email/Mobile :</FormLabel>
-                <Input
-                  required
-                  type="text"
-                  onChange={(e) => setUserEmail(e.target.value)}
-                />
+                <FormLabel mb={0}>Email :</FormLabel>
+                  <InputGroup>
+                    <InputLeftElement>
+                      <MdEmail></MdEmail>
+                    </InputLeftElement>
+                    <Input
+                      required
+                      type="email"
+                      onChange={(e) => setUserEmail(e.target.value)}
+                    />
+                  </InputGroup>
               </FormControl>
               <FormControl id="password" mb={3}>
                 <FormLabel mb={0}>Password :</FormLabel>
-                <Input
-                  required
-                  type="password"
-                  onChange={(e) => setUserPassword(e.target.value)}
-                />
+                <InputGroup>
+                  <Input
+                    required
+                    type={show_pass ? "text" : "password"}
+                    onChange={(e) => setUserPassword(e.target.value)}
+                  />
+                  <InputRightElement width='3rem'>
+                    {show_pass ? (
+                      <ViewIcon onClick={handleClick_pass}></ViewIcon>
+                      ) : (
+                      <ViewOffIcon onClick={handleClick_pass}></ViewOffIcon>
+                      )
+                    }
+                  </InputRightElement>
+                </InputGroup>
               </FormControl>
               <FormControl id="cPassword" mb={3}>
                 <FormLabel mb={0}>Confirm Password :</FormLabel>
-                <Input
-                  required
-                  type="password"
-                  onChange={(e) => setUserCpassword(e.target.value)}
-                />
+                <InputGroup>
+                  <Input
+                    required
+                    type={show_C_pass ? "text" : "password"}
+                    onChange={(e)=>handle_C_password(e)}
+                    focusBorderColor={isError ? "red.300":"blue.400"}
+                  />
+                  <InputRightElement width='3rem'>
+                    {show_C_pass ? (
+                      <ViewIcon onClick={handleClick_C_pass}></ViewIcon>
+                      ) : (
+                      <ViewOffIcon onClick={handleClick_C_pass}></ViewOffIcon>
+                      )
+                    }
+                  </InputRightElement>
+                </InputGroup>
               </FormControl>
               <Stack spacing={5} mt={5}>
                 <Button

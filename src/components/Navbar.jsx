@@ -1,12 +1,17 @@
-import { Box, Image, Text, } from '@chakra-ui/react'
+import { Box, Button, Image, Text, } from '@chakra-ui/react'
 import React from 'react'
 import { Search } from './Search'
 // import { FaUser } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser} from 'react-icons/fa';
+import { FiLogOut } from "react-icons/fi";
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../redux/auth/action';
 
 
 export const Navbar = () => {
+    const dispatch = useDispatch();
+    const isAuth = useSelector((store)=>(store.authReducer));
   return (
     <Box w="100%" top={0} position="fixed" zIndex={2} bgColor="rgb(38,165,65)" maxH="50px" p={2}  alignItems="center" display="flex" gap={2} >
         <Box flex={3}>
@@ -20,24 +25,44 @@ export const Navbar = () => {
         
 
         <Box flex={6} position="relative" top={0}>
-            <Search></Search>
+            <Search ></Search>
         </Box>
 
-        <Box color='white' flex={3} letterSpacing={1} fontFamily="heading" fontWeight="bold" display="flex" flexDirection="row-reverse" justifyContent="space-evenly" alignItems="center">
-            <Link to="/cart">
-                <Box display="flex" alignItems="center" gap={1}>
-                    <Box >
-                        <FaShoppingCart></FaShoppingCart>
+        <Box color='white' flex={3} letterSpacing={1} fontFamily="heading" fontWeight="bold" >
+            {isAuth.auth ? (
+                <Box display="flex" flexDirection="row-reverse" justifyContent="space-evenly" alignItems="center">
+                    <Box cursor="pointer" onClick={()=>dispatch(signOut())}>
+                        <FiLogOut fontSize="20px"></FiLogOut>
+                        <Text fontSize="xs" fontWeight="hairline">Logout</Text>
                     </Box>
-                    <Text >Cart</Text>
+                    <Link to="/cart">
+                        <Box display="flex" alignItems="center" position="relative">
+                            <Box fontSize="4xl">
+                                <FaShoppingCart></FaShoppingCart>
+                            </Box>
+                            <Box position="absolute" left={3} bottom={3} h="20px" w="20px" rounded="full" display="flex" justifyContent="center" alignItems="center">
+                                <Text textColor="black">99</Text>
+                            </Box>
+                        </Box>
+                    </Link>
+                    <Box  cursor="pointer" display="flex" gap={1} alignItems="center">
+                        <Text fontWeight="light">Hi! {isAuth.user} </Text>
+                        <Box backgroundColor="#155e07" h="30px" w="30px" rounded="full" display="flex" justifyContent="center" alignItems="center">
+                            <FaUser></FaUser>
+                        </Box>
+                    </Box>
                 </Box>
-           </Link>
-            <Box>
-               <Link to="/register"><Text >New User</Text></Link>
-            </Box>
-            <Box>
-                <Link to="/login"><Text >Login</Text></Link>
-            </Box>
+            ):(
+                <Box display="flex" flexDirection="row-reverse" justifyContent="space-evenly" alignItems="center">
+                    <Box>
+                        <Link to="/register"><Text >New User</Text></Link>
+                    </Box>
+                    <Box>
+                        <Link to="/login"><Text >Login</Text></Link>
+                    </Box>
+                </Box>
+            )}
+            
         </Box>
 
     </Box>

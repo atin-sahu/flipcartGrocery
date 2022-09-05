@@ -21,7 +21,7 @@ export const Login = () => {
   const [userPassword, setUserPassword] = useState("");
   const isAuth = useSelector((store)=>store.authReducer);
 
-  console.log("isAuth login",isAuth.auth);
+  console.log("isAuth login",isAuth);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
