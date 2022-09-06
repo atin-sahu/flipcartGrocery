@@ -14,6 +14,7 @@ import aixos from "axios";
 import { FilterComponent } from '../../components/FilterComponent';
 import { AddToCart } from '../../components/AddToCart';
 import { Sorting } from '../../components/Sorting';
+import { useSelector } from 'react-redux';
 
 export const Products = () => {
 
@@ -21,6 +22,8 @@ export const Products = () => {
   const [searchParams,setSearchParams] = useSearchParams();
   const [page,setPage] = useState(1);
   const {key} = useParams();
+  const store = useSelector((store)=>store);
+  console.log("products store",store);
   // console.log("search key",key);
   
   const getProducts = async (params)=>{

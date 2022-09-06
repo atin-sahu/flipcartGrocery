@@ -1,18 +1,22 @@
 import { Box, Button, Text } from '@chakra-ui/react';
 import  axios  from 'axios';
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { cartCount } from '../redux/cart/action';
 
 export const AddToCart = ({Item}) => {
-    // console.log("addtocartcomponent",Item)
-    // const token = localStorage.getItem("token") || false ;
-    const navigate = useNavigate();
 
+    const isAuth = useSelector((store)=>(store.authReducer.auth));
+    console.log("isauth addtocart",isAuth);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const setToCart = async (cartItem)=>{
-        const token = localStorage.getItem("token") || false ;
-        if(!token){
-          return navigate("/login");
-        }
+      if(!isAuth){
+        return navigate("/login")
+      }
+       
         let cartData = await axios.get("https://flipcartgrocery.herokuapp.com/carts")
         .then((cartData)=>cartData.data);
         let flag = false;
@@ -23,13 +27,14 @@ export const AddToCart = ({Item}) => {
           }
         })
         if(flag){
-          alert("Item Already Added To Card");
+          return alert("Item Already Added To Card");
         }
         let cartProduct = await axios.post(`https://flipcartgrocery.herokuapp.com/carts`,cartItem)
         .then((cartProduct)=>cartProduct.data);
-
+        dispatch(cartCount());
         alert("Item Added Successfull")
       }
+
   return (
     <Box>
         <Button w="100%" onClick={()=>setToCart(Item)}  variant="unstyled"  size="sm">

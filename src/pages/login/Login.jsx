@@ -11,20 +11,19 @@ import {
   useColorModeValue,
   Image,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { signIn } from "../../redux/auth/action";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../../redux/auth/action";
 
 export const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const navigate = useNavigate();
-  // const isAuth = useSelector((store)=>store.authReducer);
 
-  // console.log("isAuth login",isAuth);
-  // const dispatch = useDispatch();
+  const isAuth = useSelector((store)=>store.authReducer.auth);
+  console.log("isAuth login",isAuth);
+
+  const dispatch = useDispatch();
 
   const submitHandler = async(e) => {
     e.preventDefault();
@@ -34,25 +33,13 @@ export const Login = () => {
       password: userPassword,
     };
     console.log(payload);
-    try {
-      let res = await axios.post("https://flipcartgrocery.herokuapp.com/login",payload)
-      // .then((res)=>localStorage.setItem("user",JSON.stringify(res.data.user)))
-      // .then((res)=>localStorage.setItem("token",res.data.token));
-      localStorage.setItem("user",JSON.stringify(res.data.user))
-      localStorage.setItem("token",res.data.token)
-      console.log(res.data);
-      alert("login successfull !");
-      navigate("/products");
-    } catch (error) {
-      alert(error.response.data.message);
-      console.log(error);
-    }
-    // dispatch(signIn(payload));
+    dispatch(signIn(payload));
   };
 
   return (
     
   <Box mt="50px">
+    {isAuth && <Navigate to="/products"></Navigate>}
      <Box w='80%' m='auto'>
        <Flex
       minH={"80vh"}
