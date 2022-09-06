@@ -1,17 +1,19 @@
-import { Box, Button, Image, Text, } from '@chakra-ui/react'
+import { Box, Image, Text, } from '@chakra-ui/react'
 import React from 'react'
 import { Search } from './Search'
-// import { FaUser } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser} from 'react-icons/fa';
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../redux/auth/action';
+import { useState } from 'react';
 
 
 export const Navbar = () => {
-    const dispatch = useDispatch();
-    const isAuth = useSelector((store)=>(store.authReducer));
+    // const dispatch = useDispatch();
+    // const isAuth = useSelector((store)=>(store.authReducer));
+    const [token,setToken] = useState(localStorage.getItem("token") || "");
+    console.log("token",token);
   return (
     <Box w="100%" top={0} position="fixed" zIndex={2} bgColor="rgb(38,165,65)" maxH="50px" p={2}  alignItems="center" display="flex" gap={2} >
         <Box flex={3}>
@@ -29,7 +31,7 @@ export const Navbar = () => {
         </Box>
 
         <Box color='white' flex={3} letterSpacing={1} fontFamily="heading" fontWeight="bold" >
-            {isAuth.auth ? (
+            {token ? (
                 <Box display="flex" flexDirection="row-reverse" justifyContent="space-evenly" alignItems="center">
                     <Box cursor="pointer" onClick={()=>dispatch(signOut())}>
                         <FiLogOut fontSize="20px"></FiLogOut>
@@ -41,12 +43,12 @@ export const Navbar = () => {
                                 <FaShoppingCart></FaShoppingCart>
                             </Box>
                             <Box position="absolute" left={3} bottom={3} h="20px" w="20px" rounded="full" display="flex" justifyContent="center" alignItems="center">
-                                <Text textColor="black">99</Text>
+                                <Text textColor="black"></Text>
                             </Box>
                         </Box>
                     </Link>
                     <Box  cursor="pointer" display="flex" gap={1} alignItems="center">
-                        <Text fontWeight="light">Hi! {isAuth.user} </Text>
+                        <Text fontWeight="light">Hi! {JSON.parse(localStorage.getItem("user")).name}</Text>
                         <Box backgroundColor="#155e07" h="30px" w="30px" rounded="full" display="flex" justifyContent="center" alignItems="center">
                             <FaUser></FaUser>
                         </Box>

@@ -18,7 +18,7 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import axios from "axios";
@@ -31,6 +31,7 @@ export const Register = () => {
   const [show_pass, setShow_pass] = useState(false)
   const [show_C_pass, setShow_C_pass] = useState(false)
   const [isError, setIsError] = useState(true);
+  const navigate = useNavigate();
 
   const handle_C_password = (e) =>{
     const Cpassword = e.target.value;
@@ -58,6 +59,7 @@ export const Register = () => {
       let res = await axios.post("http://localhost:5000/register",details)
       console.log(res);
       alert("Registration successfull !");
+      navigate("/login");
     } catch (error) {
       alert(error.response.data.message);
       console.log(error);

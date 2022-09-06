@@ -9,6 +9,7 @@ import { Products } from "./pages/products/Products";
 import { Register } from "./pages/register/Register";
 import { Product } from "./pages/product/Product";
 import { Cart } from "./pages/cart/Cart";
+import { AuthWrapper } from "./components/AuthWrapper";
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Home></Home>} ></Route>
         <Route path="/register" element={<Register></Register>} ></Route>
         <Route path="/login" element={<Login></Login>} ></Route>
-        <Route path="/cart" element={<Cart></Cart>} ></Route>
+        <Route path="/cart" element={<AuthWrapper><Cart></Cart></AuthWrapper>} ></Route>
         <Route path="/forgot" element={<Forgot></Forgot>} ></Route>
         <Route path="/:key" element={<Products></Products>} ></Route>
         <Route path="/:key/:id" element={<Product></Product>} ></Route>

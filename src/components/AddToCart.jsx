@@ -1,11 +1,18 @@
 import { Box, Button, Text } from '@chakra-ui/react';
 import  axios  from 'axios';
 import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const AddToCart = ({Item}) => {
     // console.log("addtocartcomponent",Item)
-
+    const token = localStorage.getItem("token") || false ;
+    const navigate = useNavigate();
     const setToCart = async (cartItem)=>{
+        const token = localStorage.getItem("token") || false ;
+        if(!token){
+          // <Navigate to="/login"></Navigate>
+          return navigate("/login");
+        }
         let cartData = await axios.get("http://localhost:5000/carts")
         .then((cartData)=>cartData.data);
         let flag = false;
