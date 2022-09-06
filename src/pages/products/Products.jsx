@@ -24,7 +24,7 @@ export const Products = () => {
   // console.log("search key",key);
   
   const getProducts = async (params)=>{
-    let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
+    let data = await aixos.get(`https://flipcartgrocery.herokuapp.com/${key}`,{ params })
     .then((data)=>data.data);
     console.log("data",data);
     setProducts(data);

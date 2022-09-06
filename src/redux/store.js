@@ -14,4 +14,4 @@ export const store = createStore(
   rootReducer,
   applyMiddleware(thunk)
 );
-console.log("store", store.getState());
+// console.log("store", store.getState());

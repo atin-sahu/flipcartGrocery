@@ -13,7 +13,7 @@ export const Navbar = () => {
     // const dispatch = useDispatch();
     // const isAuth = useSelector((store)=>(store.authReducer));
     const [token,setToken] = useState(localStorage.getItem("token") || "");
-    console.log("token",token);
+    // console.log("navbar token",token);
   return (
     <Box w="100%" top={0} position="fixed" zIndex={2} bgColor="rgb(38,165,65)" maxH="50px" p={2}  alignItems="center" display="flex" gap={2} >
         <Box flex={3}>

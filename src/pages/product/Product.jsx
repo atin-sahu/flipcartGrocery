@@ -20,7 +20,7 @@ export const Product = () => {
 
   
   const getData = async () => {
-    const data = await axios.get(`http://localhost:5000/${key}/${id}`)
+    const data = await axios.get(`https://flipcartgrocery.herokuapp.com/${key}/${id}`)
     .then((data) => setItem(data.data));
   };
   console.log("setItem out",item);

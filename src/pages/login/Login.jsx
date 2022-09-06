@@ -35,14 +35,14 @@ export const Login = () => {
     };
     console.log(payload);
     try {
-      let res = await axios.post("http://localhost:5000/login",payload)
+      let res = await axios.post("https://flipcartgrocery.herokuapp.com/login",payload)
       // .then((res)=>localStorage.setItem("user",JSON.stringify(res.data.user)))
       // .then((res)=>localStorage.setItem("token",res.data.token));
       localStorage.setItem("user",JSON.stringify(res.data.user))
       localStorage.setItem("token",res.data.token)
       console.log(res.data);
       alert("login successfull !");
-      navigate(-1);
+      navigate("/products");
     } catch (error) {
       alert(error.response.data.message);
       console.log(error);

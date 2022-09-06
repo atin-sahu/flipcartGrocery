@@ -5,15 +5,15 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 export const AddToCart = ({Item}) => {
     // console.log("addtocartcomponent",Item)
-    const token = localStorage.getItem("token") || false ;
+    // const token = localStorage.getItem("token") || false ;
     const navigate = useNavigate();
+
     const setToCart = async (cartItem)=>{
         const token = localStorage.getItem("token") || false ;
         if(!token){
-          // <Navigate to="/login"></Navigate>
           return navigate("/login");
         }
-        let cartData = await axios.get("http://localhost:5000/carts")
+        let cartData = await axios.get("https://flipcartgrocery.herokuapp.com/carts")
         .then((cartData)=>cartData.data);
         let flag = false;
         let isPresent = cartData.map((item)=>{
@@ -25,8 +25,9 @@ export const AddToCart = ({Item}) => {
         if(flag){
           alert("Item Already Added To Card");
         }
-        let cartProduct = await axios.post(`http://localhost:5000/carts`,cartItem)
+        let cartProduct = await axios.post(`https://flipcartgrocery.herokuapp.com/carts`,cartItem)
         .then((cartProduct)=>cartProduct.data);
+
         alert("Item Added Successfull")
       }
   return (

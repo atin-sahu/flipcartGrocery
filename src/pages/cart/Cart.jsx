@@ -10,21 +10,21 @@ export const Cart = () => {
   const [off, setOff] = useState(0);
 
   const getCartData = async()=>{
-    let data = await axios.get("http://localhost:5000/carts")
+    let data = await axios.get("https://flipcartgrocery.herokuapp.com/carts")
     .then(data => data.data);
     let MRP = data.reduce((acc,curr)=>acc+curr.old_price,0);
-    console.log("MRP",MRP);
+    // console.log("MRP",MRP);
     setMRP(MRP);
     let off = data.reduce((acc,curr)=>acc+(curr.old_price/100)*curr.disscount,0);
-    console.log("off",off);
+    // console.log("off",off);
     setOff(off);
     setItems(data);
   }
-  console.log("items",items);
+  // console.log("items",items);
   
 
   const deleteCartItem = async(id)=>{
-     await axios.delete(`http://localhost:5000/carts/${id}`);
+     await axios.delete(`https://flipcartgrocery.herokuapp.com/carts/${id}`);
      getCartData();
   }
 
