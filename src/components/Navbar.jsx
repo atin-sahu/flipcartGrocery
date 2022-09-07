@@ -12,8 +12,10 @@ export const Navbar = () => {
     const isAuth = useSelector((store)=>(store.authReducer.auth));
     const user = useSelector((store)=>(store.authReducer.user));
     const count = useSelector((store)=>(store.cartReducer.count));
-    localStorage.setItem("carCount",JSON.stringify(count));
-    console.log("navbar isAuth", isAuth);
+    localStorage.setItem("cartCount",count);
+    const cartCount = Number(localStorage.getItem("cartCount"));
+    // console.log("navbar cartCount", cartCount);
+    // console.log("navbar isAuth", isAuth);
 
   return (
     <Box w="100%" top={0} position="fixed" zIndex={2} bgColor="rgb(38,165,65)" maxH="50px" p={2}  alignItems="center" display="flex" gap={2} >
@@ -44,7 +46,7 @@ export const Navbar = () => {
                                 <FaShoppingCart></FaShoppingCart>
                             </Box>
                             <Box position="absolute" left={3} bottom={3} h="20px" w="20px" rounded="full" display="flex" justifyContent="center" alignItems="center">
-                                <Text textColor="black">{count}</Text>
+                                <Text textColor="black">{cartCount}</Text>
                             </Box>
                         </Box>
                     </Link>

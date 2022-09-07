@@ -2,30 +2,30 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Box, Button, Divider, Image, Text } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { cartCount } from '../../redux/cart/action';
 
 export const Cart = () => {
 
   const [items,setItems] = useState([]);
   const [MRP, setMRP] = useState(0);
   const [off, setOff] = useState(0);
+  const dispatch = useDispatch();
 
   const getCartData = async()=>{
     let data = await axios.get("https://flipcartgrocery.herokuapp.com/carts")
     .then(data => data.data);
     let MRP = data.reduce((acc,curr)=>acc+curr.old_price,0);
-    // console.log("MRP",MRP);
     setMRP(MRP);
     let off = data.reduce((acc,curr)=>acc+(curr.old_price/100)*curr.disscount,0);
-    // console.log("off",off);
     setOff(off);
     setItems(data);
   }
-  // console.log("items",items);
   
-
   const deleteCartItem = async(id)=>{
-     await axios.delete(`https://flipcartgrocery.herokuapp.com/carts/${id}`);
-     getCartData();
+    await axios.delete(`https://flipcartgrocery.herokuapp.com/carts/${id}`);
+    getCartData();
+    dispatch(cartCount());
   }
 
 

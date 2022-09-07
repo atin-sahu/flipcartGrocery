@@ -8,7 +8,7 @@ import { cartCount } from '../redux/cart/action';
 export const AddToCart = ({Item}) => {
 
     const isAuth = useSelector((store)=>(store.authReducer.auth));
-    console.log("isauth addtocart",isAuth);
+    // console.log("isauth addtocart",isAuth);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();

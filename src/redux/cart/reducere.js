@@ -2,7 +2,7 @@ import { CARTCOUNT_FAILURE, CARTCOUNT_REQUEST, CARTCOUNT_SUCCESS } from "./actio
 
 
 const initialState = {
-    count:JSON.parse(Number(localStorage.getItem("cartCount")) || 0)
+    count:Number(localStorage.getItem("cartCount"))
 }
 
 export const reducer = (state=initialState, action)=>{

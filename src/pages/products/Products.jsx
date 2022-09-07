@@ -23,15 +23,11 @@ export const Products = () => {
   const [page,setPage] = useState(1);
   const {key} = useParams();
   const store = useSelector((store)=>store);
-  console.log("products store",store);
-  // console.log("search key",key);
   
   const getProducts = async (params)=>{
     let data = await aixos.get(`https://flipcartgrocery.herokuapp.com/${key}`,{ params })
     .then((data)=>data.data);
-    console.log("data",data);
     setProducts(data);
-    console.log("params",params);
   }
 
   useEffect(()=>{
