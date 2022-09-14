@@ -16,18 +16,17 @@ import { useSearchParams } from 'react-router-dom'
 export const Sorting = ({getdataFunc}) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [sortValue,setSortValue] = useState(searchParams.get("_sort") || "");
-    // const [brandValues, setBrandValues] = useState(searchParams.getAll("brand") || []);
+    const [sortValue, setSortValue] = useState(searchParams.get("sort") || "");
 
-    const sortHandler = (values)=>{
-        setSortValue(values)
+    const sortHandler = (value)=>{
+        setSortValue(value)
     }
 
     useEffect(()=>{
         if(sortValue){
-            setSearchParams({_sort:sortValue})
+            setSearchParams({sort:sortValue})
             let params = {
-                _sort:sortValue
+                sort:searchParams.get("sort")
             }
             getdataFunc(params);
         }
@@ -51,8 +50,8 @@ export const Sorting = ({getdataFunc}) => {
                         <VStack align="stretch">
                             <RadioGroup defaultValue={sortValue} onChange={sortHandler}>
                                 <Stack direction="column">
-                                    <Radio value="price">Low To High</Radio>
-                                    <Radio value="price">High To Low</Radio>
+                                    <Radio value="1">Low To High</Radio>
+                                    <Radio value="-1">High To Low</Radio>
                                 </Stack>
                             </RadioGroup>
                         </VStack>

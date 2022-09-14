@@ -14,20 +14,29 @@ import aixos from "axios";
 import { FilterComponent } from '../../components/FilterComponent';
 import { AddToCart } from '../../components/AddToCart';
 import { Sorting } from '../../components/Sorting';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export const Products = () => {
 
   const [products, setProducts] = useState([]);
   const [searchParams,setSearchParams] = useSearchParams();
   const [page,setPage] = useState(1);
+  const [totalPage,setTotalPage] = useState();
   const {key} = useParams();
-  const store = useSelector((store)=>store);
-  
-  const getProducts = async (params)=>{
-    let data = await aixos.get(`https://flipcartgrocery.herokuapp.com/${key}`,{ params })
+  // const store = useSelector((store)=>store);
+
+  const getProducts = async ()=>{
+    // https://flipcartgrocery.herokuapp.com/${key}
+    const params = {
+      page:page,
+      sort:searchParams.get("sort"),
+      brand:searchParams.getAll("brand")
+    }
+    let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
     .then((data)=>data.data);
     setProducts(data);
+    setTotalPage(Math.ceil(data.length/5));
+    // console.log("totalpage",Math.ceil(data.length/5));
   }
 
   useEffect(()=>{
@@ -35,9 +44,9 @@ export const Products = () => {
       brand:searchParams.getAll("brand"),
       page:page,
     }
-    getProducts(params);
+    getProducts();
     setSearchParams(params);
-  },[key,page,searchParams])
+  },[searchParams,page])
 
   return (
     <Box mt="50px" bgColor="whitesmoke" p={2}>
@@ -101,7 +110,7 @@ export const Products = () => {
             <Box display='flex' width='30%' justifyContent='space-around' alignItems="center">
               <Button disabled={page==1} colorScheme='blue' onClick={()=>(setPage(page-1))} > Prev</Button>
               <Text fontWeight="semibold" fontSize="md">{page}</Text>
-              <Button disabled={products.length<5} colorScheme='blue' onClick={()=>(setPage(page+1))} >Next</Button>
+              <Button disabled={page==totalPage} colorScheme='blue' onClick={()=>(setPage(page+1))} >Next</Button>
             </Box>
           </Center>
         </Box>
