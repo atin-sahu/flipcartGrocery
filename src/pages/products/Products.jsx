@@ -7,8 +7,8 @@ import {
   Button,
   Select,
   Center,
-  } from '@chakra-ui/react'
-  import { Link, useParams, useSearchParams } from "react-router-dom";
+} from '@chakra-ui/react'
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import aixos from "axios";
 import { FilterComponent } from '../../components/FilterComponent';
@@ -25,35 +25,31 @@ export const Products = () => {
   const {key} = useParams();
   // const store = useSelector((store)=>store);
 
-  const getProducts = async ()=>{
+  const getProducts = async (params)=>{
     // https://flipcartgrocery.herokuapp.com/${key}
-    const params = {
-      page:page,
-      sort:searchParams.get("sort"),
-      brand:searchParams.getAll("brand")
-    }
     let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
     .then((data)=>data.data);
-    setProducts(data);
-    setTotalPage(Math.ceil(data.length/5));
+    setProducts(data.products);
+    setTotalPage(data.totalPages);
     // console.log("totalpage",Math.ceil(data.length/5));
   }
 
   useEffect(()=>{
     const params = {
-      brand:searchParams.getAll("brand"),
       page:page,
+      sort:searchParams.get("sort"),
+      brand:searchParams.getAll("brand"),
     }
-    getProducts();
     setSearchParams(params);
+    getProducts(params);
   },[searchParams,page])
 
   return (
     <Box mt="50px" bgColor="whitesmoke" p={2}>
       <Box display="flex" gap={2}>
         <Box flex={2.2}>
-          <Sorting getdataFunc={getProducts}></Sorting>
-          <FilterComponent getdataFunc={getProducts}></FilterComponent>
+          <Sorting></Sorting>
+          <FilterComponent></FilterComponent>
         </Box>
 
         <Box flex={9.8} p={2} boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">

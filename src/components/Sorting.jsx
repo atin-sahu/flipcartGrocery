@@ -13,22 +13,17 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom'
 
-export const Sorting = ({getdataFunc}) => {
+export const Sorting = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [sortValue, setSortValue] = useState(searchParams.get("sort") || "");
 
-    const sortHandler = (value)=>{
-        setSortValue(value)
-    }
-
     useEffect(()=>{
         if(sortValue){
-            setSearchParams({sort:sortValue})
-            let params = {
-                sort:searchParams.get("sort")
-            }
-            getdataFunc(params);
+            setSearchParams({
+                sort:sortValue,
+                brand:searchParams.getAll("brand")
+            })
         }
     },[sortValue,searchParams])
 
@@ -48,7 +43,7 @@ export const Sorting = ({getdataFunc}) => {
                     </h2>
                     <AccordionPanel pb={4} >
                         <VStack align="stretch">
-                            <RadioGroup defaultValue={sortValue} onChange={sortHandler}>
+                            <RadioGroup defaultValue={sortValue} onChange={(value)=>setSortValue(value)}>
                                 <Stack direction="column">
                                     <Radio value="1">Low To High</Radio>
                                     <Radio value="-1">High To Low</Radio>

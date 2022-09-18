@@ -17,18 +17,13 @@ export const FilterComponent = ({getdataFunc}) => {
 
     const [searchParams,setSearchParams] = useSearchParams();
     const [brandValues, setBrandValues] = useState(searchParams.getAll("brand") || []);
-  
-    const brandHandler = (values)=>{
-        setBrandValues(values)
-    }
 
     useEffect(()=>{
         if(brandValues){
-            setSearchParams({brand:brandValues})
-            let params = {
-                brand:searchParams.getAll("brand")
-            }
-            getdataFunc(params);
+            setSearchParams({
+              sort:searchParams.get("sort"),
+              brand:brandValues
+            })
         }
     },[brandValues,searchParams])
 
@@ -52,7 +47,7 @@ export const FilterComponent = ({getdataFunc}) => {
         </h2>
         <AccordionPanel pb={4} >
           <VStack align="stretch">
-            <CheckboxGroup defaultValue={brandValues} onChange={brandHandler}>
+            <CheckboxGroup defaultValue={brandValues} onChange={(values)=>setBrandValues(values)}>
                 <Checkbox value="TATA">TATA</Checkbox>
                 <Checkbox value="Rajdhani">Rajdhani</Checkbox>
                 <Checkbox value="Premium">Premium</Checkbox>
