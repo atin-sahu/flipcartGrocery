@@ -29,15 +29,15 @@ export const Products = () => {
     // https://flipcartgrocery.herokuapp.com/${key}
     let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
     .then((data)=>data.data);
+    
     setProducts(data.products);
     setTotalPage(data.totalPages);
-    // console.log("totalpage",Math.ceil(data.length/5));
   }
 
   useEffect(()=>{
     const params = {
       page:page,
-      sort:searchParams.get("sort"),
+      sort:searchParams.getAll("sort"),
       brand:searchParams.getAll("brand"),
     }
     setSearchParams(params);

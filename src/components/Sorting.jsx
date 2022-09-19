@@ -16,16 +16,17 @@ import { useSearchParams } from 'react-router-dom'
 export const Sorting = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [sortValue, setSortValue] = useState(searchParams.get("sort") || "");
+    const [sortValue, setSortValue] = useState(searchParams.getAll("sort") || []);
 
     useEffect(()=>{
+        console.log("sortvalue", sortValue);
         if(sortValue){
             setSearchParams({
                 sort:sortValue,
                 brand:searchParams.getAll("brand")
             })
         }
-    },[sortValue,searchParams])
+    },[sortValue])
 
   return (
     <Box mb={1}>
@@ -43,7 +44,7 @@ export const Sorting = () => {
                     </h2>
                     <AccordionPanel pb={4} >
                         <VStack align="stretch">
-                            <RadioGroup defaultValue={sortValue} onChange={(value)=>setSortValue(value)}>
+                            <RadioGroup onChange={(value)=>setSortValue(value)}>
                                 <Stack direction="column">
                                     <Radio value="1">Low To High</Radio>
                                     <Radio value="-1">High To Low</Radio>

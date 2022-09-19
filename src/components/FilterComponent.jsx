@@ -13,7 +13,7 @@ import {
     } from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
 
-export const FilterComponent = ({getdataFunc}) => {
+export const FilterComponent = () => {
 
     const [searchParams,setSearchParams] = useSearchParams();
     const [brandValues, setBrandValues] = useState(searchParams.getAll("brand") || []);
@@ -21,11 +21,11 @@ export const FilterComponent = ({getdataFunc}) => {
     useEffect(()=>{
         if(brandValues){
             setSearchParams({
-              sort:searchParams.get("sort"),
+              sort:searchParams.getAll("sort"),
               brand:brandValues
             })
         }
-    },[brandValues,searchParams])
+    },[brandValues])
 
 
   return (
