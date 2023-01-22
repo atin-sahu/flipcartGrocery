@@ -56,7 +56,7 @@ export const Register = () => {
     };
     
     try {
-      let res = await axios.post("https://flipcartgrocery.herokuapp.com/register",details)
+      let res = await axios.post("https://tough-ant-beret.cyclic.app/register",details)
       console.log(res);
       alert("Registration successfull !");
       navigate("/login");

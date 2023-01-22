@@ -17,7 +17,7 @@ export const AddToCart = ({Item}) => {
         return navigate("/login")
       }
        
-        let cartData = await axios.get("https://flipcartgrocery.herokuapp.com/carts")
+        let cartData = await axios.get("https://tough-ant-beret.cyclic.app/carts")
         .then((cartData)=>cartData.data);
         let flag = false;
         let isPresent = cartData.map((item)=>{
@@ -29,7 +29,7 @@ export const AddToCart = ({Item}) => {
         if(flag){
           return alert("Item Already Added To Card");
         }
-        let cartProduct = await axios.post(`https://flipcartgrocery.herokuapp.com/carts`,cartItem)
+        let cartProduct = await axios.post(`https://tough-ant-beret.cyclic.app/carts`,cartItem)
         .then((cartProduct)=>cartProduct.data);
         dispatch(cartCount());
         alert("Item Added Successfull")

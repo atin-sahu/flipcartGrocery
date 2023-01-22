@@ -26,7 +26,7 @@ export const Products = () => {
   // const store = useSelector((store)=>store);
 
   const getProducts = async (params)=>{
-    // https://flipcartgrocery.herokuapp.com/${key}
+    // https://tough-ant-beret.cyclic.app/${key}
     let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
     .then((data)=>data.data);
     

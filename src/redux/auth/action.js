@@ -26,7 +26,7 @@ const signInFailure = () => {
 
 export const signIn = (payload) => (dispatch) => {
     dispatch(signInRequest())
-    axios.post("https://flipcartgrocery.herokuapp.com/login", payload)
+    axios.post("https://tough-ant-beret.cyclic.app/login", payload)
     .then((res)=>dispatch(signInSuccess(res.data),alert("Login Successfull")))
     .catch((err)=>dispatch(signInFailure(err.response),alert(JSON.stringify(err.response.data.message))));
 }
