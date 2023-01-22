@@ -12,7 +12,7 @@ export const Search = () => {
     const [finalFilter, setFinalFilter] = useState([]);
 
     const getItem =async ()=>{
-        const data =await axios.get("https://tough-ant-beret.cyclic.app/searches")
+        const data =await axios.get("https://flipcartgrocery.herokuapp.com/searches")
         .then((data)=>data.data);
         // console.log(data);
         SetItem(data);
