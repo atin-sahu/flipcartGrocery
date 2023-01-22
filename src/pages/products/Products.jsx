@@ -29,8 +29,10 @@ export const Products = () => {
     // https://tough-ant-beret.cyclic.app/${key}
     let data = await aixos.get(`https://tough-ant-beret.cyclic.app/${key}`,{ params })
     .then((data)=>data.data);
+
+    console.log("data==>",data);
     
-    setProducts(data.products);
+    setProducts(data);
     setTotalPage(data.totalPages);
   }
 
