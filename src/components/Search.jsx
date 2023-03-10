@@ -12,7 +12,7 @@ export const Search = () => {
     const [finalFilter, setFinalFilter] = useState([]);
 
     const getItem =async ()=>{
-        const data =await axios.get("https://tough-ant-beret.cyclic.app/searches")
+        const data =await axios.get("http://localhost:5000/searches")
         .then((data)=>data.data);
         // console.log(data);
         SetItem(data);

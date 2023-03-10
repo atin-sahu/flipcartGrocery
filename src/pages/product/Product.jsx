@@ -20,7 +20,7 @@ export const Product = () => {
 
   
   const getData = async () => {
-    const data = await axios.get(`https://tough-ant-beret.cyclic.app/${key}/${id}`)
+    const data = await axios.get(`http://localhost:5000/${key}/${id}`)
     .then((data) => setItem(data.data));
   };
   console.log("setItem out",item);

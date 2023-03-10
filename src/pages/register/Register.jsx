@@ -56,7 +56,7 @@ export const Register = () => {
     };
     
     try {
-      let res = await axios.post("https://tough-ant-beret.cyclic.app/register",details)
+      let res = await axios.post("http://localhost:5000/register",details)
       console.log(res);
       alert("Registration successfull !");
       navigate("/login");
