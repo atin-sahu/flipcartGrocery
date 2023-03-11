@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "dev:dev": ".env.dev vite",
-    "build": "vite build",
-    "build:dev": ".env.dev vite build",
+    "dev": "env-cmd -f .env vite",
+    "dev:dev": "env-cmd -f .env.dev vite",
+    "build": "env-cmd -f .env vite build",
+    "build:dev": "env-cmd -f .env.dev vite build",
     "preview": "vite preview"
   },
   "dependencies": {

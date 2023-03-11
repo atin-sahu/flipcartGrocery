@@ -56,7 +56,7 @@ export const Register = () => {
     };
     
     try {
-      let res = await axios.post("http://localhost:5000/register",details)
+      let res = await axios.post("http://localhost:3001/register",details)
       console.log(res);
       alert("Registration successfull !");
       navigate("/login");

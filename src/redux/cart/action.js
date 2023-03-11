@@ -21,7 +21,7 @@ const cartCountFailure = ()=>{
 }
 export const cartCount = () => (dispatch)=>{
     dispatch(cartCountRequest());
-    axios.get("http://localhost:5000/carts")
+    axios.get("http://localhost:3001/carts")
     .then((res)=>dispatch(cartCountSuccess(res.data.length)))
     .catch((err)=>dispatch(cartCountFailure(err.response),alert(JSON.stringify(err.response.data.message))));
 }

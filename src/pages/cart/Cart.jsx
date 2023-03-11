@@ -13,7 +13,7 @@ export const Cart = () => {
   const dispatch = useDispatch();
 
   const getCartData = async()=>{
-    let data = await axios.get("http://localhost:5000/carts")
+    let data = await axios.get("http://localhost:3001/carts")
     .then(data => data.data);
     let MRP = data.reduce((acc,curr)=>acc+curr.old_price,0);
     setMRP(MRP);
@@ -23,7 +23,7 @@ export const Cart = () => {
   }
   
   const deleteCartItem = async(id)=>{
-    await axios.delete(`http://localhost:5000/carts/${id}`);
+    await axios.delete(`http://localhost:3001/carts/${id}`);
     getCartData();
     dispatch(cartCount());
   }

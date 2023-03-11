@@ -26,7 +26,7 @@ export const Products = () => {
   // const store = useSelector((store)=>store);
 
   const getProducts = async (params)=>{
-    let data = await aixos.get(`http://localhost:5000/${key}`,{ params })
+    let data = await aixos.get(`http://localhost:3001/${key}`,{ params })
     .then((data)=>data.data);
 
     console.log("data==>",data);
